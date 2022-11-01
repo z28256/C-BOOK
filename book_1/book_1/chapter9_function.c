@@ -410,10 +410,15 @@
 //
 //	return 0;
 //}
-//void large_of(double* f1, double* f2)
+////void large_of(double* f1, double* f2)
+////{
+////	*f1 = *f1 > *f2 ? *f1 : *f2;
+////	*f2 = *f1 > *f2 ? *f1 : *f2;
+////}
+//
+//void large_of(double* x, double* y)
 //{
-//	*f1 = *f1 > *f2 ? *f1 : *f2;
-//	*f2 = *f1 > *f2 ? *f1 : *f2;
+//	*x > * y ? (*y = *x) : (*x = *y);
 //}
 
 
@@ -639,3 +644,5 @@
 //	}
 //	return result;
 //}
+
+
