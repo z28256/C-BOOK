@@ -936,3 +936,480 @@
 //	}
 //}
 
+
+//3.返回int类型数组中的最大值
+//#include <stdio.h>
+//#define SIZE 10
+//int Max_array(int* pi, int n);
+//int main(void)
+//{
+//	int arr[SIZE] = { 0 };
+//	int i = 0;
+//	for (i = 0; i < SIZE; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int max = Max_array(arr, SIZE);
+//	printf("%d\n", max);
+//	return 0;
+//}
+//int Max_array(int* pi, int n)
+//{
+//	int max = *pi;
+//	int i = 0;
+//	for (i = 1; i < n; i++)
+//	{
+//		if (*(pi + i) > max)
+//		{
+//			max = *(pi + i);
+//		}
+//	}
+//	return max;
+//}
+
+
+//4.返回double类型数组中的最大值的下标
+//#include <stdio.h>
+//#define SIZE 10
+//int subscript(double* pf, int n);
+//int main(void)
+//{
+//	double d_arr[SIZE] = { 0.0 };
+//	int i = 0;
+//	for (i = 0; i < SIZE; i++)
+//	{
+//		scanf("%lf", &d_arr[i]);
+//	}
+//	int ret = subscript(d_arr, SIZE);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+//int subscript(double* pf, int n)
+//{
+//	int i = 0;
+//	double max = *pf;
+//	for (i = 1; i < n; i++)
+//	{
+//		if (max < *(pf + i))
+//		{
+//			max = *(pf + i);
+//		}
+//	}
+//	for (i = 0; i < n; i++)
+//	{
+//		if (max == *(pf + i))
+//		{
+//			return i;
+//		}
+//	}
+//}
+
+
+//5.返回double类型数组中最大值和最小值的差值
+//#include <stdio.h>
+//#define SIZE 10
+//double sub(double* pf, int n);
+//int main(void)
+//{
+//	int i = 0;
+//	double d_arr[SIZE] = { 0.0 };
+//	for (i = 0; i < SIZE; i++)
+//	{
+//		scanf("%lf", &d_arr[i]);
+//	}
+//	double ret = sub(d_arr, SIZE);
+//	printf("%f\n", ret);
+//	return 0;
+//}
+//double sub(double* pf, int n)
+//{
+//	int i = 0;
+//	double min = *pf;
+//	double max = *pf;
+//	for (i = 0; i < n; i++)
+//	{
+//		if (min > *(pf + i))
+//		{
+//			min = *(pf + i);
+//		}
+//		if (max < *(pf + i))
+//		{
+//			max = *(pf + i);
+//		}
+//	}
+//	return max - min;
+//}
+
+
+//6.double类型数组倒序排列
+//#include <stdio.h>
+//#define SIZE 10
+//void reverse(double* fp, int n);
+//int main(void)
+//{
+//	int i = 0;
+//	double d_arr[SIZE] = { 0.0 };
+//	for (i = 0; i < SIZE; i++)
+//	{
+//		scanf("%lf", &d_arr[i]);
+//	}
+//	reverse(d_arr, SIZE);
+//	for (i = 0; i < SIZE; i++)
+//	{
+//		printf("%f ", d_arr[i]);
+//	}
+//	return 0;
+//}
+//void reverse(double* fp, int n)
+//{
+//	int left = 0;
+//	int right = n - 1;
+//
+//	while (left < right)
+//	{
+//		double tmp = *(fp + left);
+//		*(fp + left) = *(fp + right);
+//		*(fp + right) = tmp;
+//		left++;
+//		right--;
+//	}
+//	
+//}
+
+
+//7.初始化一个double类型二维数组，使用编程练习2的一个拷贝函数
+//将数据拷贝到另一个二维数组
+//#include <stdio.h>
+//void copy_ptrs(double* target, double* source, double* end);
+//int main(void)
+//{
+//	double d2_arr[3][2] =
+//	{
+//		{1.1, 2.2},
+//		{3.3, 4.4},
+//		{5.5, 6.6}
+//	};
+//	double copy[3][2] = { 0.0 };
+//	int i = 0;
+//	for (i = 0; i < sizeof(d2_arr) / sizeof(d2_arr[0]); i++)
+//	{
+//		copy_ptrs(copy[i], d2_arr[i], *(d2_arr + i) + 2);
+//	}
+//
+//	for (i = 0; i < sizeof(d2_arr) / sizeof(d2_arr[0][0]); i++)
+//	{
+//		printf("%f ", *(d2_arr[0] + i));	//1
+//	}
+//	printf("\n");
+//	double* f = &copy[0][0];			//2
+//	for (i = 0; i < sizeof(copy) / sizeof(copy[0][0]); i++)
+//	{
+//		printf("%f ", *(f + i));		//2
+//	}
+//	return 0;
+//}
+//
+//void copy_ptrs(double* target, double* source, double* end)
+//{
+//	while (source <= end)
+//	{
+//		*target = *source;
+//		target++;
+//		source++;
+//	}
+//}
+
+
+//8.使用编程练习2中的拷贝函数，把一个内含7个元素的数组中
+//第3到第5个元素拷贝到内含3个元素的数组中
+//#include <stdio.h>
+//void copy_ptrs(double* target, double* source, double* end);
+//int main(void)
+//{
+//	double arr[7] = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, };
+//	double arr2[3] = { 0.0 };
+//	copy_ptrs(arr2, arr + 2, arr + 4);
+//	int i = 0;
+//	for (i = 0; i < sizeof(arr2) / sizeof(arr2[0]); i++)
+//	{
+//		printf("%f ", arr2[i]);
+//	}
+//	return 0;
+//}
+//
+//void copy_ptrs(double* target, double* source, double* end)
+//{
+//	while (source <= end)
+//	{
+//		*target = *source;
+//		target++;
+//		source++;
+//	}
+//}
+
+
+//9.初始化一个double类型的3x5二维数组，使用一个处理变长数组的函数将其拷贝到
+// 另一个二维数组中，再编写一个以变长数组为形参的函数以显示两个数组
+//都能处理NxM数组（不支持变长数组，使用Nx5的数组）
+//#include <stdio.h>
+//void Copy(double(*pf1)[5], double(*pf2)[5], int n);
+//void Print(double(*pf)[5], int n);
+//int main(void)
+//{
+//	double d2_arr[3][5] =
+//	{
+//		{1.1, 1.2, 1.3, 1.4, 1.5},
+//		{2.1, 2.2, 2.3, 2.4, 2.5},
+//		{3.1, 3.2, 3.3, 3.4, 3.5},
+//	};
+//	double copy[3][5] = { 0.0 };
+//	Copy(d2_arr, copy, 3);
+//	Print(copy, 3);
+//	return 0;
+//}
+//void Copy(double(*pf1)[5], double(*pf2)[5], int n)
+//{
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			*(*(pf2 + i) + j) = *(*(pf1 + i) + j);
+//		}
+//	}
+//}
+//void Print(double(*pf)[5], int n)
+//{
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			printf("%f ", *(*(pf + i) + j));
+//		}
+//		printf("\n");
+//	}
+//
+//}
+
+
+//10. 函数接收两个数组，将两个数组中的元素之和存储到第三个数组中
+//函数接收3个数组名和一个数组大小
+//#include <stdio.h>
+//void sum_array(int* pi1, int* pi2, int* pi3, int n);
+//int main(void)
+//{
+//	int arr1[4] = { 2, 4, 5, 8 };
+//	int arr2[4] = { 1, 0, 4, 6 };
+//	int arr3[4] = { 0 };
+//
+//	sum_array(arr1, arr2, arr3, 4);
+//	int i = 0;
+//	for (i = 0; i < 4; i++)
+//	{
+//		printf("%d ", *(arr3 + i));
+//	}
+//	return 0;
+//}
+//void sum_array(int* pi1, int* pi2, int* pi3, int n)
+//{
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		*(pi3 + i) = *(pi1 + i) + *(pi2 + i);
+//	}
+//}
+
+
+//11. 声明一个int类型3x5二维数组并初始化，打印该数组，
+// 然后该数组的值翻倍，再次打印
+//#include <stdio.h>
+//void Double(int pi[][5], int line);
+//void Print(int pi[][5], int line);
+//int main(void)
+//{
+//	int arr[3][5] =
+//	{
+//		{1, 2, 3, 4, 5},
+//		{2, 3, 4, 5, 6},
+//		{3, 4, 5, 6, 7},
+//	};
+//	Double(arr, 3);
+//	Print(arr, 3);
+//	return 0;
+//}
+//void Double(int pi[][5], int line)
+//{
+//	int i = 0;
+//	for (i = 0; i < line; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			*(*(pi + i) + j) *= 2;
+//		}
+//	}
+//}
+//void Print(int pi[][5], int line)
+//{
+//	int i = 0;
+//	for (i = 0; i < line; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			printf("%2d ", pi[i][j]);
+//		}
+//		printf("\n");
+//	}
+//
+//}
+
+
+//12.重写10.7 rain.c 把main()中的主要任务都改为用函数来完成
+//10.7 rain.c  计算每年的总降水量、年平均降水量和5年中每月的平均降水量
+//#include <stdio.h>
+//#define MONTHS 12
+//#define YEARS 5
+//void year_rainfall(const float(*pf)[MONTHS]);
+//void monthly_averages(const float(*pf)[MONTHS]);
+//int main(void)
+//{
+//	const float rain[YEARS][MONTHS] =
+//	{
+//		{ 4.3f, 4.3f, 4.3f, 3.0f, 2.0f, 1.2f, 0.2f, 0.2f, 0.4f, 2.4f, 3.5f, 6.6f },
+//		{ 8.5f, 8.2f, 1.2f, 1.6f, 2.4f, 0.0f, 5.2f, 0.9f, 0.3f, 0.9f, 1.4f, 7.3f },
+//		{ 9.1f, 8.5f, 6.7f, 4.3f, 2.1f, 0.8f, 0.2f, 0.2f, 1.1f, 2.3f, 6.1f, 8.4f },
+//		{ 7.2f, 9.9f, 8.4f, 3.3f, 1.2f, 0.8f, 0.4f, 0.0f, 0.6f, 1.7f, 4.3f, 6.2f },
+//		{ 7.6f, 5.6f, 3.8f, 2.8f, 3.8f, 0.2f, 0.0f, 0.0f, 0.0f, 1.3f, 2.6f, 5.2f }
+//	};
+//	year_rainfall(rain);
+//	monthly_averages(rain);
+//	return 0;
+//}
+//void year_rainfall(const float (*pf)[MONTHS])
+//{
+//	int year = 0;
+//	float total = 0.0f;
+//	int month = 0;
+//	float subtot = 0.0f;
+//	printf(" YEAR RAINFALL (inches)\n");
+//
+//	for (year = 0, total = 0; year < YEARS; year++)
+//	{
+//		for (month = 0, subtot = 0; month < MONTHS; month++)
+//		{
+//			subtot += *(*(pf + year) + month);
+//		}
+//		printf("%5d %15.1f\n", 2010 + year, subtot);
+//		total += subtot;
+//	}
+//	printf("\nThe yearly average is %.1f inches.\n\n", total / YEARS);
+//
+//}
+//void monthly_averages(const float(*pf)[MONTHS])
+//{
+//	int month = 0;
+//	int year = 0;
+//	float subtot = 0.0f;
+//	printf("MONTHLY AVERAGES:\n\n");
+//	printf("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n");
+//
+//	for (month = 0; month < MONTHS; month++)
+//	{
+//		for (year = 0, subtot = 0; year < YEARS; year++)
+//		{
+//			subtot += pf[year][month];
+//		}
+//		printf("%3.1f ", subtot / YEARS);
+//	}
+//	printf("\n");
+//
+//}
+
+
+//13.用户输入3组数，每组5个double类型的数组
+//a.把用户输入的数据存储在3x5的数组中
+//b.计算每组5个数据的平均值
+//c.计算所有数据的平均值
+//d.找出15个数中的最大值
+//e.打印结果
+//对于b,利用一维数组平均值的函数，循环写出结果,其他都是以整个数组作为参数
+//c 和 d 函数应把结果返回主调函数
+//#include <stdio.h>
+//void input(double(*d2_arr)[5]);
+//void average(double* arr);
+//double all_average(double(*fp)[5]);
+//double max(double(*fp)[5]);
+//int main(void)
+//{
+//	double arr[3][5] = { 0.0 };
+//	input(arr);
+//	int i = 0;
+//	double ret = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		average(arr[i]);
+//	}
+//	ret = all_average(arr);
+//	printf("Average: %f\n", ret);
+//	ret = max(arr);
+//	printf("Max: %f\n", ret);
+//	return 0;
+//}
+//void input(double(*d2_arr)[5])
+//{
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		printf("%d: ", i);
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			scanf("%lf", &d2_arr[i][j]);
+//		}
+//	}
+//}
+//void average(double* arr)
+//{
+//	int i = 0;
+//	double sum = 0.0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		sum += *(arr + i);
+//	}
+//	printf("%f \n", sum / 5);
+//}
+//double all_average(double(*fp)[5])
+//{
+//	int i = 0;
+//	double sum = 0.0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			sum += *(*(fp + i) + j);
+//		}
+//	}
+//	return sum / 15;
+//}
+//double max(double(*fp)[5])
+//{
+//	int i = 0;
+//	double max = **fp;
+//	for (i = 0; i < 15; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			if (max < *(*(fp + i) + j))
+//			{
+//				max = *(*(fp + i) + j);
+//			}
+//		}
+//	}
+//	return max;
+//}
