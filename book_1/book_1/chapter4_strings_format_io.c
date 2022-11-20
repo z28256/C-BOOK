@@ -40,6 +40,12 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	char arr[] = "x";
+//	char a = 'x';
+//	return 0;
+//}
 
 //4.3 praise2.c
 //#include <stdio.h>
@@ -435,6 +441,7 @@
 
 
 //8. 1 gallon = 3.785 litre, 1 mile = 1.609 km, mile / gallon - litre / 100 km
+//litre / 100km = litre / km * 100
 //#define GALLON 3.758
 //#define MILE 1.609
 //#include <stdio.h>
@@ -448,7 +455,7 @@
 //	printf("Enter your gallons: \n");
 //	scanf("%lf", &gallon);
 //	printf("%.1f mile / gallon\n", mile / gallon);
-//	printf("%.1f litre / 100 km\n", gallon * GALLON / (mile * MILE) / 100);
+//	printf("%.1f litre / 100 km\n", (gallon * GALLON / (mile * MILE)) * 100);
 //
 //	return 0;
 //}
