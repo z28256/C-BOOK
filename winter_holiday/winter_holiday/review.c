@@ -516,3 +516,118 @@
 //}
 
 
+//折半查找
+//#include <stdio.h>
+//int main()
+//{
+//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int key = 10;
+//	int left = 0;
+//	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+//	int mid = 0;
+//	while (left <= right)
+//	{
+//		mid = (left + right) / 2;
+//		if (key < arr[mid])
+//		{
+//			right = mid - 1;
+//		}
+//		else if (key > arr[mid])
+//		{
+//			left = mid + 1;
+//		}
+//		else
+//		{
+//			break;
+//		}
+//	}
+//	if (left > right)
+//	{
+//		printf("找不到！\n");
+//	}
+//	else
+//	{
+//		printf("找到了，下标是%d\n", mid);
+//	}
+//	return 0;
+//}
+
+
+//二分查找函数
+//#include <stdio.h>
+//int bin_search(int arr[], int left, int right, int key)
+//{
+//	int mid = 0;
+//	while (left <= right)
+//	{
+//		mid = (left + right) / 2;
+//		if (arr[mid] > key)
+//		{
+//			right = mid - 1;
+//		}
+//		else if (arr[mid] < key)
+//		{
+//			left = mid + 1;
+//		}
+//		else
+//		{
+//			return mid;
+//		}
+//	}
+//	return -1;
+//}
+//int main()
+//{
+//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int key = 11;
+//	int left = 0;
+//	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+//	printf("%d\n", bin_search(arr, left, right, key));
+//
+//	return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//int main()
+//{
+//	char input[10] = { 0 };
+//	system("shutdown -s -t 60");
+//again:
+//	printf("电脑将在一分钟内关机，输入12345可取消关机\n");
+//	scanf("%s", input);
+//	if (0 == strcmp(input, "12345"))
+//	{
+//		system("shutdown -a");
+//	}
+//	else
+//	{
+//		goto again;
+//	}
+//	return 0;
+//}
+
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//int main()
+//{
+//	char input[10] = { 0 };
+//	system("shutdown -s -t 60");
+//	while (1)
+//	{
+//		printf("Enter 12345: ");
+//		scanf("%s", input);
+//		if (!(strcmp(input, "12345")))
+//		{
+//			system("shutdown -a");
+//			break;
+//		}
+//	}
+//	return 0;
+//}
+
+
