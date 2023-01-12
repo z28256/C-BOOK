@@ -66,22 +66,22 @@
 //	return 0;
 //}
 
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
-//void* my_memcpy(void* dest, void* src, size_t num);
-void* my_memmove(void* dest, void* src, size_t num);
-
-int main()
-{
-	int arr1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-	int arr2[10] = { 0 };
-	//my_memcpy(arr2, arr1, 40);
-	//memcpy(arr2, arr1, 40);
-	my_memmove(arr1, arr1 + 3, 20);
-	//memmove(arr1 + 2, arr1, 20);
-	return 0;
-}
+//#include <stdio.h>
+//#include <string.h>
+//#include <assert.h>
+////void* my_memcpy(void* dest, void* src, size_t num);
+//void* my_memmove(void* dest, void* src, size_t num);
+//
+//int main()
+//{
+//	int arr1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+//	int arr2[10] = { 0 };
+//	//my_memcpy(arr2, arr1, 40);
+//	//memcpy(arr2, arr1, 40);
+//	my_memmove(arr1, arr1 + 3, 20);
+//	//memmove(arr1 + 2, arr1, 20);
+//	return 0;
+//}
 //void* my_memcpy(void* dest, void* src, size_t num)
 //{
 //	assert(dest && src);
