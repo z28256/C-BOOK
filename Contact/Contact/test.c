@@ -14,25 +14,27 @@ int main()
 		scanf("%d", &input);
 		switch (input)
 		{
-		case 1:
+		case Add:
 			add(&con);
 			break;
-		case 2:
+		case Del:
 			del(&con);
 			break;
-		case 3:
+		case Sea:
 			sea(&con);
 			break;
-		case 4:
+		case Mod:
 			mod(&con);
 			break;
-		case 5:
+		case Show:
 			show(&con);
 			break;
-		case 6:
+		case Sort:
 			sort(&con);
 			break;
-		case 0:
+		case Exit:
+			save(&con);
+			destory(&con);
 			printf("ÍË³ö\n");
 			break;
 
