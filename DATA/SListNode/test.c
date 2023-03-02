@@ -3,52 +3,93 @@
 
 void test1()
 {
-	SListNode* phead = NULL;
-	SListPrint(phead);
-	SListPushBack(&phead, 1);
-	SListPrint(phead);
-	SListPushBack(&phead, 2);
-	SListPrint(phead);
-	SListPushBack(&phead, 3);
-	SListPrint(phead);
-	SListPushBack(&phead, 4);
-	SListPrint(phead);
+	SLTNode* plist = NULL;
+	
+	SLTPushBack(&plist, 1);
+	//SLTPushBack(&plist, 2);
+	//SLTPushBack(&plist, 3);
+	//SLTPushBack(&plist, 4);
 
-	//SListPushFront(&phead, 1);
-	//SListPrint(phead);
-	//SListPushFront(&phead, 2);
-	//SListPrint(phead);
-	//SListPushFront(&phead, 3);
-	//SListPrint(phead);
-	//SListPushFront(&phead, 4);
-	//SListPrint(phead);
+	SLTPopBack(&plist);
+	SLTPrint(plist);
+}
 
-	//SListPopBack(&phead);
-	//SListPrint(phead);
-	//SListPopBack(&phead);
-	//SListPrint(phead);
-	//SListPopBack(&phead);
-	//SListPrint(phead);
-	//SListPopBack(&phead);
-	//SListPrint(phead);
-	//SListPopBack(&phead);
-	//SListPrint(phead);
+void test2()
+{
+	SLTNode* plist = NULL;
 
-	SListPopFront(&phead);
-	SListPrint(phead);
-	SListPopFront(&phead);
-	SListPrint(phead);
-	SListPopFront(&phead);
-	SListPrint(phead);
-	SListPopFront(&phead);
-	SListPrint(phead);
-	SListPopFront(&phead);
-	SListPrint(phead);
+	SLTPushFront(&plist, 1);
+	//SLTPushFront(&plist, 2);
+	//SLTPushFront(&plist, 3);
+	//SLTPushFront(&plist, 4);
+	SLTPopFront(&plist);
+	SLTPrint(plist);
+}
+
+void test3()
+{
+	SLTNode* plist = NULL;
+
+	SLTPushBack(&plist, 1);
+	SLTPushBack(&plist, 2);
+	SLTPushBack(&plist, 3);
+	SLTPushBack(&plist, 4);
+
+	SLTNode* find = SListFind(plist, 3);
+	(find->data) *= 2;
+	SLTPrint(plist);
+	
+}
+
+void test4()
+{
+	SLTNode* plist = NULL;
+
+	SLTPushBack(&plist, 1);
+	SLTPushBack(&plist, 2);
+	SLTPushBack(&plist, 3);
+	SLTPushBack(&plist, 4);
+		
+	//SListInsert(&plist, SListFind(plist, 1), 9);
+	SListInsert(&plist, NULL, 6);
+	SLTPrint(plist);
+	//SListErase(&plist, SListFind(plist, 6));
+	//SLTPrint(plist);
+	//SListErase(&plist, SListFind(plist, 9));
+	//SLTPrint(plist);
+}
+
+
+void test5()
+{
+	SLTNode* plist = NULL;
+
+	SLTPushBack(&plist, 1);
+	SLTPushBack(&plist, 2);
+	SLTPushBack(&plist, 3);
+	SLTPushBack(&plist, 4);
+
+	SListInsertAfter(SListFind(plist, 3), 9);
+	SListInsertAfter(SListFind(plist, 4), 8);
+	SLTPrint(plist);
+
+	SListEraseAfter(SListFind(plist, 4));
+	SLTPrint(plist);
+
+	SListEraseAfter(SListFind(plist, 2));
+	SLTPrint(plist);
 
 }
 
 int main()
 {
-	test1();
+	//test1();
+	test2();
+
+	//test3();
+	//test4();
+	//test5();
+	
+
 	return 0;
 }

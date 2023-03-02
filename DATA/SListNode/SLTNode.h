@@ -1,36 +1,34 @@
-#pragma once
+ï»¿#pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<assert.h>
 
-// slist.h
-typedef int SLTDateType;
+typedef int SLTDataType;
+
 typedef struct SListNode
 {
-	SLTDateType data;
+	SLTDataType data;
 	struct SListNode* next;
-}SListNode;
+}SLTNode;
 
-// ¶¯Ì¬ÉêÇëÒ»¸ö½Úµã
-SListNode* BuySListNode(SLTDateType x);
-// µ¥Á´±í´òÓ¡
-void SListPrint(SListNode* plist);
-// µ¥Á´±íÎ²²å
-void SListPushBack(SListNode** pplist, SLTDateType x);
-// µ¥Á´±íµÄÍ·²å
-void SListPushFront(SListNode** pplist, SLTDateType x);
-// µ¥Á´±íµÄÎ²É¾
-void SListPopBack(SListNode** pplist);
-// µ¥Á´±íÍ·É¾
-void SListPopFront(SListNode** pplist);
-// µ¥Á´±í²éÕÒ
-SListNode* SListFind(SListNode* plist, SLTDateType x);
-// µ¥Á´±íÔÚposÎ»ÖÃÖ®ºó²åÈëx
-// ·ÖÎöË¼¿¼ÎªÊ²Ã´²»ÔÚposÎ»ÖÃÖ®Ç°²åÈë£¿
-void SListInsertAfter(SListNode* pos, SLTDateType x);
-// µ¥Á´±íÉ¾³ıposÎ»ÖÃÖ®ºóµÄÖµ
-// ·ÖÎöË¼¿¼ÎªÊ²Ã´²»É¾³ıposÎ»ÖÃ£¿
-void SListEraseAfter(SListNode* pos);
-// µ¥Á´±íµÄÏú»Ù
-void SListDestroy(SListNode* plist);
+
+void SLTPrint(SLTNode* phead);
+void SLTPushBack(SLTNode** pphead, SLTDataType x);
+void SLTPushFront(SLTNode** pphead, SLTDataType x);
+
+void SLTPopBack(SLTNode** pphead);
+void SLTPopFront(SLTNode** pphead);
+
+
+ 
+SLTNode* SListFind(SLTNode* phead, SLTDataType x);
+
+void SListInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x);
+
+void SListErase(SLTNode** pphead, SLTNode* pos);
+
+
+void SListInsertAfter(SLTNode* pos, SLTDataType x);
+
+void SListEraseAfter(SLTNode* pos);
