@@ -195,3 +195,25 @@ void SListEraseAfter(SLTNode* pos)
 	p = NULL;
 
 }
+
+//Ïú»Ù
+//void SListDestroy(SLTNode* phead)
+//{
+//	while (phead)
+//	{
+//		SLTNode* temp = phead->next;
+//		free(phead);
+//		phead = temp;
+//	}
+//}
+
+
+void SListDestroy(SLTNode* phead)
+{
+	while (phead)
+	{
+		SLTNode* temp = phead;
+		phead = phead->next;
+		free(temp);
+	}
+}

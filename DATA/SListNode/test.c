@@ -79,17 +79,18 @@ void test5()
 	SListEraseAfter(SListFind(plist, 2));
 	SLTPrint(plist);
 
+	SListDestroy(plist);
+	plist = NULL;
 }
 
 int main()
 {
 	//test1();
-	test2();
+	//test2();
 
 	//test3();
 	//test4();
-	//test5();
-	
+	test5();
 
 	return 0;
 }

@@ -28,7 +28,9 @@ void SListInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x);
 
 void SListErase(SLTNode** pphead, SLTNode* pos);
 
-
 void SListInsertAfter(SLTNode* pos, SLTDataType x);
 
 void SListEraseAfter(SLTNode* pos);
+
+//销毁
+void SListDestroy(SLTNode* pos);
