@@ -29,10 +29,17 @@ LTNode* LTInit()
 
 void LTDestroy(LTNode* phead)
 {
-	phead->prev = NULL;
-	LTNode* temp = phead->next;
-	free(phead->next);
-	temp = NULL;
+	assert(phead);
+
+	LTNode* cur = phead->next;
+	while (cur != phead)
+	{
+		LTNode* next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	free(phead);
+	//phead = NULL;//不起作用
 }
 
 
@@ -73,14 +80,14 @@ bool LTEmpty(LTNode* phead)
 
 void LTPopBack(LTNode* phead)
 {
+	assert(phead);
+	assert(LTEmpty(phead));
 	LTErase(phead->prev);
 
-	/*assert(phead);
-	assert(LTEmpty(phead));
-	LTNode* tail = phead->prev;
+	/*LTNode* tail = phead->prev;
 	phead->prev = tail->prev;
 	tail->prev->next = phead;
-
+	
 	free(tail);
 	tail = NULL;*/
 
@@ -88,8 +95,8 @@ void LTPopBack(LTNode* phead)
 
 void LTPushFront(LTNode* phead, LTDataType val)
 {
-	/*assert(phead);
-	LTNode* newnode = BuyListNode(val);
+	assert(phead);
+	/*LTNode* newnode = BuyListNode(val);
 	LTNode* head = phead->next;
 
 	newnode->prev = phead;
@@ -102,13 +109,13 @@ void LTPushFront(LTNode* phead, LTDataType val)
 
 void LTPopFront(LTNode* phead)
 {
-	LTErase(phead->next);
 
-	/*
+	
 	assert(phead);
 	assert(LTEmpty(phead));
+	LTErase(phead->next);
 
-	LTNode* head = phead->next;
+	/*LTNode* head = phead->next;
 	phead->next = head->next;
 	head->next->prev = head;
 
@@ -134,5 +141,21 @@ void LTErase(LTNode* pos)
 	LTNode* prev = pos->prev;
 	prev->next = pos->next;
 	pos->next->prev = prev;
+	free(pos);
 }
 
+LTNode* LTFind(LTNode* phead, LTDataType val)
+{
+	assert(phead);
+
+	LTNode* cur = phead->next;
+	while (cur != phead)
+	{
+		if (cur->data == val)
+		{
+			return cur;
+		}
+		cur = cur->next;
+	}
+	return NULL;
+}

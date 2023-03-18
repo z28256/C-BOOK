@@ -34,12 +34,27 @@ void test2()
 	LTPrint(phead);
 }
 
+void test3()
+{
+	LTNode* phead = LTInit();
+	LTPushFront(phead, 1);
+	LTPushFront(phead, 5);
+	LTPushFront(phead, 10);
+	LTPushFront(phead, 89);
+
+	LTInsert(LTFind(phead, 5), -9);
+	LTPrint(phead);
+
+	LTErase(LTFind(phead, 10));
+	LTPrint(phead);
+
+}
 
 int main()
 {
 	//test1();
 	//test2();
-	test2();
+	test3();
 
 	return 0;
 }

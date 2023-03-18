@@ -37,3 +37,4 @@ extern void LTInsert(LTNode* pos, LTDataType val);
 
 extern void LTErase(LTNode* pos);
 
+extern LTNode* LTFind(LTNode* phead, LTDataType val);
