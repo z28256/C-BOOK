@@ -10,11 +10,11 @@ int main()
 	QueuePush(&p, 6);
 	QueuePush(&p, 2);
 	QueuePush(&p, 3);
-	while (!QueueEmpty(&p))
+	/*while (!QueueEmpty(&p))
 	{
 		printf("%d ", QueueFront(&p));
 		QueuePop(&p);
-	}
+	}*/
 	QueueDestroy(&p);
 
 	return 0;

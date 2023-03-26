@@ -18,8 +18,12 @@ void QueueDestroy(QUE* p)
 		free(cur);
 		cur = next;
 	}
-	free(p->tail);
-	p->head = p->tail = NULL;  //必须有，如果没有会报错
+	//可以使用free()对同一个地址进行多次释放，
+	//但这样做会导致程序崩溃或不可预测的行为。
+	//因此，应该避免多次释放同一个地址。
+
+	//free(p->tail); //p->tail已经被释放过了
+	p->head = p->tail = NULL;
 	p->size = 0;
 }
 
