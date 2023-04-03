@@ -231,3 +231,42 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize)
     inorder(root, ret, returnSize);
     return ret;
 }
+
+
+//ÁíÒ»¿ÅÊ÷µÄ×ÓÊ÷
+
+bool isSameTree(struct TreeNode* p, struct TreeNode* q)
+{
+    if (p == NULL && q == NULL)
+        return true;
+    else if (p == NULL || q == NULL)
+        return false;
+    else if (p->val != q->val)
+        return false;
+    else
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+}
+
+
+bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot)
+{
+    if (root == NULL)
+        return false;
+    return isSameTree(root, subRoot) ||
+        isSubtree(root->left, subRoot) ||
+        isSubtree(root->right, subRoot);
+}
+
+/*
+bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot)
+{
+    if (root == NULL)
+        return false;
+    if (isSameTree(root, subRoot))
+        return true;
+
+    if (isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot))
+        return true;
+    return false;
+}*/
+
