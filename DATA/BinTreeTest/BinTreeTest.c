@@ -270,3 +270,57 @@ bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot)
     return false;
 }*/
 
+
+
+//编一个程序，读入用户输入的一串先序遍历字符串，
+//根据此字符串建立一个二叉树（以指针方式存储）。 
+//例如如下的先序遍历字符串： 
+//ABC##DE#G##F### 其中“#”表示的是空格，
+//空格字符代表空树。建立起此二叉树以后，
+//再对二叉树进行中序遍历，输出遍历结果。
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct TreeNode
+{
+    char ch;
+    struct TreeNode* left;
+    struct TreeNode* right;
+}TreeNode;
+
+TreeNode* TreeCreat(char* arr, int* i)
+{
+
+    if (arr[*i] == '#')
+    {
+        (*i)++;
+        return NULL;
+    }
+    TreeNode* root = (TreeNode*)malloc(sizeof(TreeNode));
+    root->ch = arr[(*i)++];
+    root->left = TreeCreat(arr, i);
+    root->right = TreeCreat(arr, i);
+    return root;
+}
+void inSort(TreeNode* root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inSort(root->left);
+    printf("%c ", root->ch);
+    inSort(root->right);
+}
+int main()
+{
+    char arr[100];
+    scanf("%s", arr);
+
+    int i = 0;
+    TreeNode* node = TreeCreat(arr, &i);
+    inSort(node);
+    return 0;
+}
