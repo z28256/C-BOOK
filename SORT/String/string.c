@@ -222,3 +222,201 @@ bool isPalindrome(char* s)
 		return true;
 	}
 }
+
+
+//实现myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数
+//
+//读入字符串并丢弃无用的前导空格，检查下一个字符为正还是负号，读取该字符。 如果两者都不存在，则假定结果为正。
+//读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。
+//将前面步骤读入的这些数字转换为整数("0032" -> 32）。如果没有读入数字，则整数为 0 。
+//小于 −2^31 的整数应该被固定为 −2^31 ，大于 2^31 − 1 的整数应该被固定为 231 − 1 。
+//
+//本题中的空白字符只包括空格字符 ' ' 。
+
+
+int myAtoi(char* s)
+{
+	int len = strlen(s);
+	int index = 0;
+	bool flag = true;
+	long long ret = 0;
+	while (index < len && s[index] == ' ')
+		index++;
+	if (s[index] == '-' || s[index] == '+')
+	{
+		if (s[index] == '-')
+			flag = false;
+		index++;
+	}
+	//字符串的末尾是'\0'，isdigit的结果为假，结束循环，
+	//不需要index < len来作为循环判断条件
+	//isdigit('5')是判断字符是否为数字字符的，不需要再减'0'
+	while (isdigit(s[index]))
+	{
+		ret = s[index] - '0' + ret * 10;
+		if (ret >= INT_MAX && flag)
+			return INT_MAX;
+		if (-ret <= INT_MIN && !flag)
+			return INT_MIN;
+		index++;
+	}
+	return flag ? (int)ret : -(int)ret;
+}
+
+
+
+//模拟strstr()
+int strStr(char* haystack, char* needle)
+{
+	int index1 = 0, index2 = 0;
+	int len1 = strlen(haystack);
+	int len2 = strlen(needle);
+
+	while (index1 < len1)
+	{
+		while (index1 < len1 && haystack[index1] != needle[index2])
+		{
+			index1++;
+		}
+		while (index1 < len1 && index2 < len2 && haystack[index1] == needle[index2])
+		{
+			index1++;
+			index2++;
+		}
+		if (index2 == len2)
+		{
+			return index1 - len2;
+		}
+		else
+		{
+			index1 = index1 - index2 + 1;
+			index2 = 0;
+		}
+	}
+	return -1;
+}
+
+
+int strStr(char* haystack, char* needle)
+{
+	int len1 = strlen(haystack), len2 = strlen(needle);
+	for (int i = 0; i + len2 <= len1; i++)
+	{
+		bool flag = true;
+		for (int j = 0; j < len2; j++)
+		{
+			if (haystack[i + j] != needle[j])
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+			return i;
+	}
+	return -1;
+}
+
+
+
+//最长公共前缀
+char* longestCommonPrefix(char** strs, int strsSize)
+{
+	int len = strlen(strs[0]);
+	int i, j;
+	for (i = 1; i < strsSize; i++)
+	{
+		if (strlen(strs[i]) < len)
+		{
+			len = strlen(strs[i]);
+		}
+	}
+	for (j = 0; j < len; j++)
+	{
+		for (i = 1; i < strsSize; i++)
+		{
+			if (strs[i - 1][j] != strs[i][j])
+				break;
+		}
+		if (i != strsSize)
+			break;
+	}
+	strs[0][j] = '\0';
+	return strs[0];
+}
+
+
+//外观数组
+//1：1
+//2：11
+//3：21
+//4：1211
+//5：111221
+//....
+
+//1.迭代
+char* calNext(char* cur)
+{
+	int len = strlen(cur);
+	char* res = (char*)calloc(5000, sizeof(char));
+	char c = cur[0];
+	int pos = 0;
+	int count = 1;
+	for (int j = 1; j < len; ++j)
+	{
+		if (cur[j] == c)
+		{
+			count++;
+		}
+		else
+		{
+			res[pos++] = '0' + count;
+			res[pos++] = c;
+			count = 1;
+			c = cur[j];
+		}
+	}
+	res[pos++] = '0' + count;
+	res[pos++] = c;
+	return res;
+}
+
+char* countAndSay(int n)
+{
+	if (n == 1)
+		return "1";
+	char* cur = "1";
+	for (int i = 1; i < n; ++i)
+	{
+		cur = calNext(cur);
+	}
+	return cur;
+}
+
+
+//2.递归
+char* countHelper(char* s, int n)
+{
+	if (n == 1)
+		return s;
+	int count;
+	char ch[10000] = { 0 };
+	char* p = ch;
+	while (*s)
+	{
+		count = 1;
+		while (*s == *(s + 1))
+		{
+			count++;
+			s++;
+		}
+		*p++ = (char)(count + '0');
+		*p++ = *s++;
+	}
+	return countHelper(ch, n - 1);
+}
+
+char* countAndSay(int n)
+{
+	return countHelper("1", n);
+}
