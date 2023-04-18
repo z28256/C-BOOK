@@ -215,3 +215,112 @@ int rob(int* nums, int numsSize)
     }
     return second;
 }
+
+
+//第一个错误的版本
+//输入：n = 5, bad = 4
+//输出：4
+//解释：
+//调用 isBadVersion(3) -> false
+//调用 isBadVersion(5) -> true
+//调用 isBadVersion(4) -> true
+//所以，4 是第一个错误的版本。
+
+
+int firstBadVersion(int n)
+{
+    int left = 1, right = n;
+    while (left < right)
+    {
+        int mid = (right - left) / 2 + left;
+        if (isBadVersion(mid))
+        {
+            right = mid;
+        }
+        else
+        {
+            left = mid + 1;
+        }
+    }
+    return left;
+}
+
+
+//合并两个有序数组
+//非递减顺序排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。
+//合并 nums2 到 nums1 中，使合并后的数组同样按非递减顺序排列。
+//合并后存储在数组 nums1 中。nums1 的初始长度为 m + n，前 m 个元素表示应合并的元素，后 n 个元素为 0 。
+
+#include <stdlib.h>
+//(1)qsort
+int cmp(const void* e1, const void* e2)
+{
+    return *(int*)e1 - *(int*)e2;
+}
+
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        nums1[i + m] = nums2[i];
+    }
+    qsort(nums1, m + n, sizeof(int), cmp);
+}
+
+
+//(2)双指针
+//void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
+//{
+//    int p1 = 0, p2 = 0, index = 0;
+//    int sorted[m + n];
+//    while (p1 < m || p2 < n)
+//    {
+//        if (p1 == m)
+//        {
+//            sorted[index++] = nums2[p2++];
+//        }
+//        else if (p2 == n)
+//        {
+//            sorted[index++] = nums1[p1++];
+//        }
+//        else if (nums1[p1] < nums2[p2])
+//        {
+//            sorted[index++] = nums1[p1++];
+//        }
+//        else
+//        {
+//            sorted[index++] = nums2[p2++];
+//        }
+//    }
+//    for (int i = 0; i < m + n; ++i)
+//    {
+//        nums1[i] = sorted[i];
+//    }
+//}
+
+
+
+//(3)逆向双指针
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
+{
+    int p1 = 0, p2 = 0, tail = m + n - 1;
+    while (p1 >= 0 || p2 >= 0)
+    {
+        if (p1 == -1)
+        {
+            nums1[tail--] = nums2[p2--];
+        }
+        else if (p2 == -1)
+        {
+            nums1[tail--] = nums2[p1--];
+        }
+        else if (nums1[p1] > nums2[p2])
+        {
+            nums1[tail--] = nums1[p1--];
+        }
+        else
+        {
+            nums1[tail--] = nums2[p2--];
+        }
+    }
+}
